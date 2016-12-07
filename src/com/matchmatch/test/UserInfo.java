@@ -10,12 +10,15 @@ import javax.ws.rs.core.MediaType;
 public class UserInfo {
 
 	@GET
-	@Path("/name/{i}")
-	@Produces(MediaType.TEXT_HTML)
-	public String userName(@PathParam("i") String i)
+	@Path("/name/{name}")
+	//@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public User userName(@PathParam("name") String name)
 	{
-		String name = i;
+		User user = new User();
+		user.setUsername(name);
+		user.setPassword("password1!");
 		
-		return "Hello, " + name;
+		return user;
 	}
 }
